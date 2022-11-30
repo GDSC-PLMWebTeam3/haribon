@@ -6,9 +6,8 @@
 	--clr-inputs: #91D4F0;
 	padding: 1rem;
 	min-height: 100vh;
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	gap: 1rem;
+	display: flex;
+	gap: 5rem;
 	justify-content: center;
 	place-items: center;
 }
