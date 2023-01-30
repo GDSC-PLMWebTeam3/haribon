@@ -6,16 +6,21 @@
 	--clr-inputs: #91D4F0;
 	padding: 1rem;
 	min-height: 100vh;
-	display: flex;
-	gap: 5rem;
-	justify-content: center;
+	display: grid;
 	place-items: center;
+	place-content: center;
 }
 
 /* 📌 LOGO SECTION */
+.logoSection {
+	display: grid;
+	justify-items: center;
+	text-align: center;
+}
+
 .logoSection>img {
 	width: 90vw;
-	max-width: 22.5rem;
+	max-width: 28rem;
 }
 
 .logoSection>p {
@@ -56,11 +61,6 @@
 	padding: 0 0.5rem;
 }
 
-.loginSection a {
-	text-align: center;
-	font-size: 0.75rem;
-}
-
 .loginSection button {
 	border-radius: 0.625rem;
 	height: 3rem;
@@ -81,35 +81,4 @@
 
 .loginSection button:disabled {
 	background-color: transparent;
-}
-
-.loginSection .register {
-	padding: 1rem 0;
-	border-top: 1px solid grey;
-	display: flex;
-	justify-content: center;
-}
-
-@media all and (max-width: 860px) {
-	.loginPage {
-		display: flex;
-		flex-direction: column;
-		gap: 1rem;
-	}
-
-	.logoSection {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-	}
-
-	.logoSection img {
-		max-width: 28rem;
-	}
-
-	.logoSection>p {
-		max-width: 28rem;
-		text-align: justify;
-	}
-
 }

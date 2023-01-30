@@ -3,11 +3,11 @@ import Image from 'next/image';
 import loginStyles from '../styles/Login.module.css';
 import Link from 'next/link';
 import React from "react";
+import { getCsrfToken, getSession } from "next-auth/react";
 
-export default function Home() {
+export default function Home({ csrfToken }) {
 	const [formData, setFormData] = React.useState({
-		username: "",
-		password: ""
+		email: "",
 	});
 
 	function handleInputChange(event) {
@@ -30,36 +30,40 @@ export default function Home() {
 				</p>
 			</section>
 			<section className={loginStyles.loginSection}>
-				<form action="">
+				<form method="post" action="/api/auth/signin/email">
+					<input name="csrfToken" type="hidden" defaultValue={csrfToken} />
 					<label htmlFor="username">
-						Username
+						PLM Email
 						<input
-							type="text"
-							name="username"
-							id="username"
-							value={formData.username}
-							onChange={handleInputChange}
-							autoComplete="true"
-						/>
-					</label>
-					<label htmlFor="password">
-						Password
-						<input
-							type="password"
-							name="password"
-							id="password"
-							value={formData.password}
+							type="email"
+							name="email"
+							id="email"
+							value={formData.email}
 							onChange={handleInputChange}
 							autoComplete="true"
 						/>
 					</label>
 					<button type="submit">Login</button>
-					<Link href={"#"}>Forgot Password?</Link>
 				</form>
-				<div className={loginStyles.register}>
-					<button>Register</button>
-				</div>
 			</section>
 		</main>
 	);
+}
+
+export async function getServerSideProps(context) {
+	const csrfToken = await getCsrfToken(context);
+	const session = await getSession(context);
+	console.log(session);
+	if (session) {
+		return {
+			props: { session, csrfToken },
+			redirect: {
+				permanent: false,
+				destination: "/user"
+			}
+		};
+	}
+	return {
+		props: { csrfToken },
+	};
 }

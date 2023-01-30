@@ -1,6 +1,6 @@
 import React from "react";
 import navStyles from "../styles/Navigation.module.css";
-export default function Navigation() {
+export default function Navigation(props) {
 	return (
 		<nav className={navStyles.navbar}>
 			<div className={navStyles.logoAndSearch}>
@@ -15,7 +15,7 @@ export default function Navigation() {
 				<img src="/icon-friends.png" alt="Friends" />
 				<img src="/icon-home.png" alt="Home" />
 			</div>
-			<div className={navStyles.userMenu}>Hi, Username!</div>
+			<div className={navStyles.userMenu}>{props.user}</div>
 		</nav>
 	);
 }
