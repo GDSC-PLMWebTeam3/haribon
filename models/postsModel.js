@@ -1,5 +1,24 @@
 import { Schema, model, models } from "mongoose";
 
+const commentSchema = new Schema({
+	email: {
+		type: String,
+		required: true
+	},
+	anonymous: {
+		type: Boolean,
+		required: true
+	},
+	comment: {
+		type: String,
+		required: true
+	},
+	date: {
+		type: Date,
+		default: Date.now
+	},
+});
+
 const postSchema = new Schema({
 	email: {
 		type: String,
@@ -14,18 +33,11 @@ const postSchema = new Schema({
 		required: true
 	},
 	date: {
-		type: String,
-		required: true
+		type: Date,
+		default: Date.now
 	},
-	time: {
-		type: String,
-		required: true
-	},
-	cpuTime: {
-		type: Number,
-		required: true
-	},
-	likes: [String]
+	likes: [String],
+	comments: [commentSchema]
 });
 
 const Post = models.Post || model('Post', postSchema);

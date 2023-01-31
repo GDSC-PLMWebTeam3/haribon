@@ -1,4 +1,4 @@
-// 🎯 LIKE POST
+// 🎯 COMMENT ON A POST
 
 import connectMongo from "../../../../lib/connectMongo";
 import Post from "../../../../models/postsModel";
@@ -7,16 +7,17 @@ import Post from "../../../../models/postsModel";
  * @param {import('next'.NextApiResponse)} res
  */
 
-export default async function likePost(req, res) {
+export default async function commentPost(req, res) {
 	const { method } = req;
 	await connectMongo();
-	// TODO: Dislike if user already likes the post.
 	switch (method) {
 		case "POST":
 			try {
-				const { postId, userEmail } = req.body;
-				const post = await Post.findOneAndUpdate({ _id: postId }, { $push: { likes: userEmail } }).exec();
-
+				const { postId, anonymous, email, comment } = req.body;
+				const post = await Post.findOneAndUpdate(
+					{ _id: postId },
+					{ $push: { comments: { email, anonymous, comment } } }
+				).exec();
 				res.status(200).json({
 					success: true,
 					data: post

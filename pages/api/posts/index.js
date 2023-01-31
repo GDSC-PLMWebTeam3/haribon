@@ -15,7 +15,7 @@ export default async function getAllPost(req, res) {
 	switch (method) {
 		case "GET":
 			try {
-				const posts = await Post.find({}).sort({ cpuTime: 'descending' }).exec();
+				const posts = await Post.find({}).sort({ date: -1 }).exec();
 				res.status(200).json({
 					success: true,
 					data: posts
@@ -27,25 +27,24 @@ export default async function getAllPost(req, res) {
 
 		case "POST":
 			try {
-				const date = new Date();
-				const dd = String(date.getDate()).padStart(2, '0');
-				const mm = String(date.getMonth() + 1).padStart(2, '0');
-				const yyyy = date.getFullYear();
-				const time = date.getTime();
-				const hh = date.getHours();
-				const min = date.getMinutes();
-
-				const post = await Post.create({
-					...req.body,
-					date: `${yyyy}/${mm}/${dd}`,
-					time: `${hh}:${min}`,
-					cpuTime: time,
-					likes: 0
-				});
-
+				const post = await Post.create({ ...req.body });
 				res.status(200).json({
 					success: true,
 					data: post
+				});
+			} catch (error) {
+				res.status(400).json({ success: false, error: 400 });
+			}
+			break;
+
+		case "DELETE":
+			try {
+				const { postId, email } = req.body;
+				console.log(postId, email);
+				const posts = await Post.findOneAndDelete({ _id: postId, email: email }).exec();
+				res.status(200).json({
+					success: true,
+					data: posts
 				});
 			} catch (error) {
 				res.status(400).json({ success: false, error: 400 });

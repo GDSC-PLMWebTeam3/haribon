@@ -1,4 +1,4 @@
-// 🎯 LIKED POST BY A USER
+// 🎯 GET USER COMMENTS
 
 import connectMongo from "../../../../lib/connectMongo";
 import Post from "../../../../models/postsModel";
@@ -7,14 +7,14 @@ import Post from "../../../../models/postsModel";
  * @param {import('next'.NextApiResponse)} res
  */
 
-export default async function likePost(req, res) {
+export default async function getUserCommentedPost(req, res) {
 	const { method } = req;
-	const userEmail = req.query.getUserLikedPost;
 	await connectMongo();
 	switch (method) {
 		case "GET":
 			try {
-				const posts = await Post.find({ likes: userEmail }).sort({ cpuTime: 'descending' }).exec();
+				const { email } = req.query;
+				const posts = await Post.find({ "comments.email": email }).sort({ "comments.date": -1 }).exec();
 				res.status(200).json({
 					success: true,
 					data: posts

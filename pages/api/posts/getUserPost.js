@@ -9,13 +9,13 @@ import Post from "../../../models/postsModel";
 
 export default async function getUserPost(req, res) {
 	const { method } = req;
-	const userEmail = req.query.getUserPost;
+	const email = req.query.email;
 	await connectMongo();
 
 	switch (method) {
 		case "GET":
 			try {
-				const posts = await Post.find({ email: userEmail }).sort({ cpuTime: 'descending' }).exec();
+				const posts = await Post.find({ email: email }).sort({ date: -1 }).exec();
 				res.status(200).json({
 					success: true,
 					data: posts
