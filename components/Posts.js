@@ -1,11 +1,8 @@
-import { useEffect, useState } from "react";
-import useFetchPosts from "../hooks/useFetchPosts";
+import { useState } from "react";
 import Image from "next/image";
 import { nanoid } from "nanoid";
-import { useRouter } from "next/router";
 import styles from "../styles/MainContent/Feed/Posts.module.css";
 import Comment from "./Comment";
-import { send } from "process";
 
 export default function Posts(props) {
 

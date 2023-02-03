@@ -38,7 +38,7 @@ export default function Home({ csrfToken }) {
 				<form method="post" action="/api/auth/signin/email">
 					<input name="csrfToken" type="hidden" defaultValue={csrfToken} />
 					<label htmlFor="username">
-						PLM Email
+						{/* PLM Email */}
 						<input
 							type="email"
 							name="email"
@@ -46,9 +46,11 @@ export default function Home({ csrfToken }) {
 							value={formData.email}
 							onChange={handleInputChange}
 							autoComplete="true"
+							placeholder="PLM Email"
+							title="PLM Email"
 						/>
 					</label>
-					<button type="submit">Login</button>
+					<button type="submit" disabled={!formData.email.endsWith("@plm.edu.ph")}>Login</button>
 				</form>
 			</section>
 		</main>

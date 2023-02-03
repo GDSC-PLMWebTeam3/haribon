@@ -41,7 +41,7 @@ export default NextAuth({
 	},
 	pages: {
 		signIn: '/',
-		// verifyRequest: '/verify',
-		// error: '/error'
+		verifyRequest: '/verify',
+		error: '/error'
 	}
 });

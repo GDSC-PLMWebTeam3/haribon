@@ -1,25 +1,38 @@
-import Image from "next/image";
 import CreatePost from "./CreatePost";
 import Posts from "./Posts";
 import styles from "../styles/MainContent/Feed.module.css";
-import useFetchPosts from "../hooks/useFetchPosts";
 import { useState, useEffect } from "react";
-import useLikePost from "../hooks/useLikePost";
-import useUnlikePost from "../hooks/useUnlikePost";
+
 export default function Feed(props) {
 	const [posts, setPosts] = useState("Loading");
 
 	async function getPosts() {
-		setPosts(await useFetchPosts("/api/posts"));
+		const res = await fetch("/api/posts", {
+			method: "GET"
+		});
+		const data = await res.json();
+		setPosts(data.data);
 	}
 
 	async function likePost(id) {
-		const res = await useLikePost(id, props.email);
+		const res = await fetch("/api/posts/like/likePost", {
+			method: "PUT",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify({ postId: id, email: props.email })
+		});
 		getPosts();
 	}
 
 	async function unlikePost(id) {
-		const res = await useUnlikePost(id, props.email);
+		const res = await fetch("/api/posts/like/unlikePost", {
+			method: "PUT",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify({ postId: id, email: props.email })
+		});
 		getPosts();
 	}
 

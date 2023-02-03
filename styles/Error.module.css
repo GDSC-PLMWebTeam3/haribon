@@ -1,0 +1,40 @@
+.container {
+	height: 100vh;
+	display: grid;
+	place-content: center;
+	justify-items: center;
+}
+
+.container * {
+	margin: 0;
+}
+
+.container img {
+	width: 10rem;
+	height: auto;
+}
+
+.error {
+	display: grid;
+	text-align: center;
+	margin: 0.5rem 0 2rem 0;
+}
+
+.error h2 {
+	font-weight: normal;
+	font-size: 1.25rem;
+}
+
+.container button {
+	background: none;
+	border: 0.15rem solid #00CBFF;
+	border-radius: 1rem;
+	padding: 0.25rem 1rem;
+}
+
+.container button:hover {
+	background-color: #00CBFF;
+	color: white;
+	transition: 0.1s ease-in-out;
+	font-weight: 600;
+}

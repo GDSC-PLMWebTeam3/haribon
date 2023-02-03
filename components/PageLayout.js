@@ -50,10 +50,10 @@ function Header(props) {
 function BottomNavigation() {
 	return (
 		<nav className={navStyles.bottomNavigation}>
-			<img src="/icon-home.png" alt="Home" />
-			<img src="/icon-messages.png" alt="Messages" />
-			<img src="/icon-friends.png" alt="Friends" />
-			<img src="/icon-bell.png" alt="Home" />
+			<Image src="/icon-home.png" alt="Home" width={48} height={48} />
+			<Image src="/icon-messages.png" alt="Messages" width={48} height={48} />
+			<Image src="/icon-friends.png" alt="Friends" width={48} height={48} />
+			<Image src="/icon-bell.png" alt="Notifications" width={48} height={48} />
 		</nav>
 	);
 }

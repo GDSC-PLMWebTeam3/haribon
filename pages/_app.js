@@ -9,6 +9,7 @@ export default function App({
 		<>
 			<Head>
 				<title>Haribon</title>
+				<link rel="shortcut icon" href="/bare-logo.png" type="image/x-icon" />
 			</Head>
 			<SessionProvider session={session}>
 				<Component {...pageProps} />
