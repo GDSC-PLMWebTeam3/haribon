@@ -24,18 +24,22 @@
 
 .trendContainer tr * {
 	line-height: 2.5rem;
-	font-size: 1.25rem;
 }
 
 .trendContainer th {
+	font-size: 1.25rem;
 	min-width: 3rem;
 	width: 3rem;
 	min-height: 2rem;
 }
 
 .trendContainer td {
+	max-width: 5rem;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 	background-color: #0088B4;
-	padding: 0 1rem;
+	padding: 0 0.5rem;
 	color: white;
 	font-weight: 600;
 }
