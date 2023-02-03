@@ -1,8 +1,6 @@
-import Image from "next/image";
 import PageLayout from "../../components/PageLayout";
-import { signOut, getSession } from "next-auth/react";
+import { getSession } from "next-auth/react";
 import MainContent from "../../components/MainContent";
-import { useRouter } from "next/router";
 export default function Home(props) {
 	const user = props.email.split("@")[0];
 	return (

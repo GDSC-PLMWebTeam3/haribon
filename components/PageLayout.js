@@ -3,6 +3,7 @@ import Image from "next/image";
 import navStyles from "../styles/PageLayout.module.css";
 import { signOut, getSession } from "next-auth/react";
 import { useRouter } from "next/router";
+import Link from "next/link";
 export default function PageLayout(props) {
 	const route = useRouter().route;
 	return (
@@ -27,7 +28,7 @@ function Header(props) {
 				<input type="text" name="search" className={navStyles.search} />
 			</form>
 			<div className={navStyles.navigations}>
-				<a href="/user">
+				<Link href="/user">
 					<Image
 						className={
 							props.route == "/user" ?
@@ -39,8 +40,8 @@ function Header(props) {
 						width={48}
 						height={48}
 					/>
-				</a>
-				<a href="/user/trending">
+				</Link>
+				<Link href="/user/trending">
 					<Image
 						className={
 							props.route == "/user/trending" ?
@@ -51,7 +52,7 @@ function Header(props) {
 						alt="Trending" width={48}
 						height={48}
 					/>
-				</a>
+				</Link>
 				<Image src="/icon-friends.png" alt="Friends" width={48} height={48} />
 				<Image src="/icon-bell.png" alt="Notifications" width={48} height={48} />
 			</div>
@@ -64,8 +65,8 @@ function Header(props) {
 					height={512}
 				/>
 				<div className={navStyles.dropdown}>
-					<a className={navStyles.dropdownEmail}>{props.email}</a>
-					<a onClick={() => signOut()}>Sign Out</a>
+					<Link href="" className={navStyles.dropdownEmail}>{props.email}</Link>
+					<Link href="" onClick={() => signOut()}>Sign Out</Link>
 				</div>
 			</div>
 		</header>
@@ -75,7 +76,7 @@ function Header(props) {
 function BottomNavigation({ route }) {
 	return (
 		<nav className={navStyles.bottomNavigation}>
-			<a href="/user">
+			<Link href="/user">
 				<Image
 					className={
 						route == "/user" ?
@@ -87,8 +88,8 @@ function BottomNavigation({ route }) {
 					width={48}
 					height={48}
 				/>
-			</a>
-			<a href="/user/trending">
+			</Link>
+			<Link href="/user/trending">
 				<Image
 					className={
 						route == "/user/trending" ?
@@ -99,7 +100,7 @@ function BottomNavigation({ route }) {
 					alt="Trending" width={48}
 					height={48}
 				/>
-			</a>
+			</Link>
 			<Image
 				className={
 					route == "/user/friends" ?

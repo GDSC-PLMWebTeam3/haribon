@@ -23,6 +23,7 @@ export default function ErrorPage(res) {
 	return (
 		<div className={styles.container}>
 			<Image
+				alt=""
 				src={"/bare-logo.png"}
 				width={200}
 				height={200}
