@@ -16,6 +16,11 @@
 	border-radius: 50%;
 }
 
+.imageContainer img {
+	width: min-content;
+	height: auto;
+}
+
 .userNames {
 	text-align: center;
 	display: grid;

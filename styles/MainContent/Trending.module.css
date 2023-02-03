@@ -1,0 +1,41 @@
+.container {
+	border: 0.15rem solid #0088B4;
+	border-radius: 1rem;
+	padding: 0.8rem;
+}
+
+.container h1 {
+	margin: 0;
+	font-size: 1.25rem;
+	text-transform: uppercase;
+}
+
+.trends {
+	margin-top: 1rem;
+	display: grid;
+	gap: 0.5rem;
+}
+
+.trendContainer {
+	width: 100%;
+	border-collapse: collapse;
+	border: 1px solid #0088B4;
+}
+
+.trendContainer tr * {
+	line-height: 2.5rem;
+	font-size: 1.25rem;
+}
+
+.trendContainer th {
+	min-width: 3rem;
+	width: 3rem;
+	min-height: 2rem;
+}
+
+.trendContainer td {
+	background-color: #0088B4;
+	padding: 0 1rem;
+	color: white;
+	font-weight: 600;
+}

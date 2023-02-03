@@ -50,14 +50,14 @@ function IndividualPost({
 			<div className={styles.post}>
 				<div className={styles.postHeading}>
 					<div className={styles.user}>
-						<div className={styles.imageContainer}>
+						{/* <div className={styles.imageContainer}>
 							<Image
 								src={"/user-img.jpg"}
 								alt=""
 								width={612}
 								height={362}
 							/>
-						</div>
+						</div> */}
 						<div>
 							<h1>
 								{post.anonymous ? "Anon" : post.email.split("@")[0]}

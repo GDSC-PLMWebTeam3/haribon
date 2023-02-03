@@ -24,14 +24,14 @@ export default function CreatePost(props) {
 	}
 	return (
 		<section className={styles.createPost}>
-			<div className={styles.imageContainer}>
+			{/* <div className={styles.imageContainer}>
 				<Image
 					src={"/user-img.jpg"}
 					alt=""
 					width={612 / 2}
 					height={362 / 2}
 				/>
-			</div>
+			</div> */}
 			<form onSubmit={handlePost}>
 				<label htmlFor="anonymous" className={styles.anonymous}>
 					<input
@@ -59,7 +59,7 @@ export default function CreatePost(props) {
 							height={108}
 							title={"Add Photo"}
 						/>
-						<input type="file" name="addPhoto" id="addPhoto" />
+						<input type="file" name="addPhoto" id="addPhoto" hidden />
 					</label>
 					<button className={styles.btnPost}>Post</button>
 				</div>

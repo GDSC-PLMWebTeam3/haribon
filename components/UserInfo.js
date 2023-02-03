@@ -3,14 +3,14 @@ import styles from "../styles/MainContent/UserInfo.module.css";
 export default function UserInfo(props) {
 	return (
 		<section className={styles.userInfo}>
-			<div className={styles.imageContainer}>
+			{/* <div className={styles.imageContainer}>
 				<Image
 					src={"/user-img.jpg"}
 					alt=""
 					width={612 / 2}
 					height={362 / 2}
 				/>
-			</div>
+			</div> */}
 			<div className={styles.userNames}>
 				<h1>{props.user}</h1>
 				{/* <h2>{props.email}</h2> */}
