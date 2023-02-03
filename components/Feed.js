@@ -68,6 +68,21 @@ export default function Feed(props) {
 		getPosts();
 	}
 
+	async function deleteComment(postId, commentId) {
+		const res = await fetch("/api/posts/comment/deleteComment", {
+			method: "PUT",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify({
+				postId: postId,
+				email: props.email,
+				commentId: commentId,
+			})
+		});
+		getPosts();
+	}
+
 	useEffect(() => {
 		getPosts();
 	}, []);
@@ -82,6 +97,8 @@ export default function Feed(props) {
 				likePost={likePost}
 				unlikePost={unlikePost}
 				deletePost={deletePost}
+				commentPost={commentPost}
+				deleteComment={deleteComment}
 			/>
 		</section>
 	);

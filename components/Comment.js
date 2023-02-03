@@ -1,18 +1,20 @@
 import styles from "../styles/MainContent/Feed/Comment.module.css";
 import Image from "next/image";
 export default function Comment(props) {
-	const commentDate = props.date.split("T")[0];
-	const commentTime = props.date.split("T")[1].slice(0, 5);
+	const time = new Date(props.date);
+	const date = time.toDateString();
+	const hour = time.getHours();
+	const min = time.getMinutes();
 	return (
 		<section className={styles.comment}>
 			<div className={styles.commentHeading}>
 				<div>
 					<h2>{props.email.split("@")[0]}</h2>
-					<p className={styles.date}>{commentDate} @ {commentTime}</p>
+					<p className={styles.date}>{date} @ {hour}:{min}</p>
 				</div>
 				{
 					props.sessionEmail == props.email &&
-					<button>
+					<button onClick={props.deleteComment}>
 						<Image
 							className={styles.imgDelete}
 							src={"/icon-delete.png"}
@@ -23,7 +25,7 @@ export default function Comment(props) {
 					</button>
 				}
 			</div>
-			<p className={styles.content}>Comment</p>
+			<p className={styles.content}>{props.comment}</p>
 		</section>
 	);
 }

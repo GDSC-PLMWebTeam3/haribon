@@ -5,6 +5,8 @@ import { nanoid } from "nanoid";
 import { useRouter } from "next/router";
 import styles from "../styles/MainContent/Feed/Posts.module.css";
 import Comment from "./Comment";
+import { send } from "process";
+
 export default function Posts(props) {
 
 
@@ -15,13 +17,15 @@ export default function Posts(props) {
 		<section className={styles.allPostsContainer}>
 			{props.posts.map((post) => {
 				return (
-					<Post
+					<IndividualPost
 						key={nanoid()}
 						post={post}
 						sessionEmail={props.email}
 						likePost={() => props.likePost(post._id)}
 						unlikePost={() => props.unlikePost(post._id)}
 						deletePost={() => props.deletePost(post._id)}
+						commentPost={props.commentPost}
+						deleteComment={props.deleteComment}
 					/>
 				);
 			})}
@@ -29,17 +33,21 @@ export default function Posts(props) {
 	);
 }
 
-function Post({
+function IndividualPost({
 	post,
 	sessionEmail,
 	likePost,
 	unlikePost,
-	deletePost
+	deletePost,
+	commentPost,
+	deleteComment
 }) {
-	const [showComments, setShowComments] = useState(true);
+	const [showComments, setShowComments] = useState(false);
 	const id = post.id;
-	const postDate = post.date.split("T")[0];
-	const postTime = post.date.split("T")[1].slice(0, 5);
+	const time = new Date(post.date);
+	const date = time.toDateString();
+	const hour = time.getHours();
+	const min = time.getMinutes();
 	return (
 		<article className={styles.postContainer}>
 			<div className={styles.post}>
@@ -57,7 +65,7 @@ function Post({
 							<h1>
 								{post.anonymous ? "Anon" : post.email.split("@")[0]}
 							</h1>
-							<p className={styles.date}>{postDate} @ {postTime}</p>
+							<p className={styles.date}>{date} @ {hour}:{min}</p>
 						</div>
 					</div>
 					{
@@ -83,6 +91,7 @@ function Post({
 								width={512}
 								height={512}
 							/>
+							{post.likes.length}
 						</button> :
 						<button onClick={likePost}>
 							<Image
@@ -91,6 +100,7 @@ function Post({
 								width={512}
 								height={512}
 							/>
+							{post.likes.length}
 						</button>
 					}
 					<button onClick={() => setShowComments(!showComments)}>
@@ -100,30 +110,39 @@ function Post({
 							width={512}
 							height={512}
 						/>
+						{post.comments.length}
 					</button>
 				</div>
 				{
-					showComments &&
+					// showComments &&
 					post.comments.map(comment => {
 						return (
-							<div key={nanoid()}>
-								<Comment
-									sessionEmail={sessionEmail}
-									email={comment.email}
-									anonymous={comment.anonymous}
-									comment={comment.comment}
-									date={comment.date}
-								/>
-								<AddComment key={nanoid()} postId={post._id} />
-							</div>
+							<Comment
+								key={nanoid()}
+								sessionEmail={sessionEmail}
+								email={comment.email}
+								anonymous={comment.anonymous}
+								comment={comment.comment}
+								date={comment.date}
+								deleteComment={() => deleteComment(post._id, comment._id)}
+							/>
 						);
-					})}
+					})
+				}
+				{
+					showComments &&
+					<AddComment
+						key={nanoid()}
+						postId={post._id}
+						commentPost={commentPost}
+					/>
+				}
 			</div>
 		</article >
 	);
 }
 
-function AddComment(props) {
+function AddComment({ postId, commentPost }) {
 	const [comment, setComment] = useState({
 		comment: "",
 		anonymous: false
@@ -138,9 +157,15 @@ function AddComment(props) {
 			};
 		});
 	}
+
+	function sendComment(event) {
+		event.preventDefault();
+		commentPost(postId, comment.comment, comment.anonymous);
+		setComment({ comment: "", anonymous: false });
+	}
 	return (
 		<>
-			<form className={styles.commentForm}>
+			<form onSubmit={sendComment} className={styles.commentForm}>
 				<div className={styles.addComment}>
 					<textarea
 						name="comment"
@@ -163,7 +188,7 @@ function AddComment(props) {
 						type="checkbox"
 						name="anonymous"
 						id="anonymous"
-						value={comment.anonymous}
+						checked={comment.anonymous}
 						onChange={handleCommentChange}
 					/>
 					Comment anonymously
