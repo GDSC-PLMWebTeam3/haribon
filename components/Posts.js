@@ -36,28 +36,35 @@ function Post({
 	unlikePost,
 	deletePost
 }) {
-	const router = useRouter();
+	const [showComments, setShowComments] = useState(true);
 	const id = post.id;
-
+	const postDate = post.date.split("T")[0];
+	const postTime = post.date.split("T")[1].slice(0, 5);
 	return (
 		<article className={styles.postContainer}>
-			<div className={styles.imageContainer}>
-				<Image
-					src={"/user-img.jpg"}
-					alt=""
-					width={612 / 2}
-					height={362 / 2}
-				/>
-			</div>
 			<div className={styles.post}>
 				<div className={styles.postHeading}>
-					<h1>
-						{post.anonymous ? "Anon" : post.email.split("@")[0]}
-					</h1>
+					<div className={styles.user}>
+						<div className={styles.imageContainer}>
+							<Image
+								src={"/user-img.jpg"}
+								alt=""
+								width={612}
+								height={362}
+							/>
+						</div>
+						<div>
+							<h1>
+								{post.anonymous ? "Anon" : post.email.split("@")[0]}
+							</h1>
+							<p className={styles.date}>{postDate} @ {postTime}</p>
+						</div>
+					</div>
 					{
 						sessionEmail == post.email &&
 						<button onClick={deletePost}>
 							<Image
+								className={styles.imgDelete}
 								src={"/icon-delete.png"}
 								alt="Delete"
 								width={512}
@@ -66,7 +73,7 @@ function Post({
 						</button>
 					}
 				</div>
-				<p>{post.post}</p>
+				<p className={styles.content}>{post.post}</p>
 				<div className={styles.buttons}>
 					{post.likes.includes(sessionEmail) ?
 						<button onClick={unlikePost}>
@@ -86,7 +93,7 @@ function Post({
 							/>
 						</button>
 					}
-					<button>
+					<button onClick={() => setShowComments(!showComments)}>
 						<Image
 							src={"/icon-comment.png"}
 							alt=""
@@ -95,33 +102,73 @@ function Post({
 						/>
 					</button>
 				</div>
-				{post.comments.map(comment => {
-					return (
-						<>
-							<Comment
-								key={nanoid()}
-								sessionEmail={sessionEmail}
-								email={comment.email}
-								anonymous={comment.anonymous}
-								comment={comment.comment}
-								date={comment.date}
-							/>
-							<form className={styles.addComment}>
-								<textarea name="" />
-								<button>
-									<Image
-										src={"/icon-send.png"}
-										alt=""
-										width={512}
-										height={512}
-										title={"Send Comment"}
-									/>
-								</button>
-							</form>
-						</>
-					);
-				})}
+				{
+					showComments &&
+					post.comments.map(comment => {
+						return (
+							<div key={nanoid()}>
+								<Comment
+									sessionEmail={sessionEmail}
+									email={comment.email}
+									anonymous={comment.anonymous}
+									comment={comment.comment}
+									date={comment.date}
+								/>
+								<AddComment key={nanoid()} postId={post._id} />
+							</div>
+						);
+					})}
 			</div>
 		</article >
+	);
+}
+
+function AddComment(props) {
+	const [comment, setComment] = useState({
+		comment: "",
+		anonymous: false
+	});
+	console.log(comment);
+	function handleCommentChange(event) {
+		const { name, type, checked, value } = event.target;
+		setComment(prevState => {
+			return {
+				...prevState,
+				[name]: type == "checkbox" ? checked : value
+			};
+		});
+	}
+	return (
+		<>
+			<form className={styles.commentForm}>
+				<div className={styles.addComment}>
+					<textarea
+						name="comment"
+						title="Comment"
+						value={comment.comment}
+						onChange={handleCommentChange}
+					/>
+					<button>
+						<Image
+							src={"/icon-send.png"}
+							alt=""
+							width={512}
+							height={512}
+							title={"Send Comment"}
+						/>
+					</button>
+				</div>
+				<label htmlFor="commentAnonymous">
+					<input
+						type="checkbox"
+						name="anonymous"
+						id="anonymous"
+						value={comment.anonymous}
+						onChange={handleCommentChange}
+					/>
+					Comment anonymously
+				</label>
+			</form>
+		</>
 	);
 }

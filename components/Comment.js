@@ -1,4 +1,4 @@
-import styles from "../styles/MainContent/Comment.module.css";
+import styles from "../styles/MainContent/Feed/Comment.module.css";
 import Image from "next/image";
 export default function Comment(props) {
 	const commentDate = props.date.split("T")[0];

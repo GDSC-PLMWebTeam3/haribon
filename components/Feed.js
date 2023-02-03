@@ -50,8 +50,24 @@ export default function Feed(props) {
 			})
 		});
 		getPosts();
-
 	}
+
+	async function commentPost(id, comment, anonymous) {
+		const res = await fetch("/api/posts/comment/commentPost", {
+			method: "PUT",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify({
+				postId: id,
+				email: props.email,
+				comment: comment,
+				anonymous: anonymous
+			})
+		});
+		getPosts();
+	}
+
 	useEffect(() => {
 		getPosts();
 	}, []);

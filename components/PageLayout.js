@@ -1,6 +1,7 @@
 import React, { Children } from "react";
 import Image from "next/image";
 import navStyles from "../styles/PageLayout.module.css";
+import { signOut, getSession } from "next-auth/react";
 
 export default function PageLayout(props) {
 	return (
