@@ -1,0 +1,16 @@
+.mainContent {
+	margin: 1rem;
+	display: grid;
+	justify-content: center;
+
+}
+
+.container {
+	/* max-width: 100rem; */
+	min-height: calc(100vh + 5rem);
+	display: grid;
+	gap: 1rem;
+	justify-content: center;
+	align-items: start;
+	grid-template-columns: 1fr 2fr 1fr;
+}

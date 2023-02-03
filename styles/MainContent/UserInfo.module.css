@@ -1,0 +1,64 @@
+.userInfo {
+	border: 0.15rem solid #0088B4;
+	border-radius: 1rem;
+	padding: 1rem;
+	display: grid;
+	justify-items: center;
+}
+
+.imageContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 10rem;
+	height: 10rem;
+	overflow: hidden;
+	border-radius: 50%;
+}
+
+.userNames {
+	text-align: center;
+	display: grid;
+	gap: 0.25rem;
+}
+
+.userNames h1 {
+	margin-bottom: 0;
+	font-size: 1rem;
+}
+
+/* .userNames h2 {
+	font-size: 0.80rem;
+	font-weight: normal;
+	color: grey;
+	margin-top: 0;
+	word-break: normal;
+} */
+
+.bio {
+	font-size: 0.85rem;
+	text-align: justify;
+}
+
+.accountStats,
+.accountStats table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.accountStats th {
+	text-align: left;
+	font-weight: normal;
+}
+
+.accountStats td {
+	text-align: right;
+}
+
+.accountStats tr {
+	height: 2.5rem;
+}
+
+.accountStats tr:not(:last-child) {
+	border-bottom: 0.15rem solid #00CBFF;
+}

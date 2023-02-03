@@ -1,0 +1,161 @@
+.header {
+	background-color: #B7DFF0;
+	padding: 0.5rem 1rem;
+	display: grid;
+	align-items: center;
+	/* justify-content: space-between; */
+	grid-template-columns: 2fr 2fr 1.5fr;
+	gap: 2.5rem;
+}
+
+.logoAndSearch {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.logoAndSearch>img {
+	width: 2.5rem;
+	height: auto;
+}
+
+.search {
+	height: 2rem;
+	width: 100%;
+	min-width: 10rem;
+	max-width: 25rem;
+	border-radius: 0.75rem;
+	border: 0;
+	padding: 0 1rem;
+	background-image: url("../public/icon-search.png");
+	background-size: 1.5rem;
+	background-repeat: no-repeat;
+	background-position: 95% center;
+}
+
+.navigations {
+	display: flex;
+	gap: 3rem;
+	justify-content: space-between;
+}
+
+.navigations>img {
+	width: 1.875rem;
+	height: auto;
+}
+
+.userMenu {
+	justify-self: end;
+}
+
+.userMenu p {
+	margin: 0;
+	background-color: white;
+	padding: 0.25rem 1rem;
+	border-radius: 1rem;
+}
+
+.userMenu img {
+	width: 2rem;
+	height: auto;
+	display: none;
+}
+
+/* Dropdown Hover */
+.userMenu .dropdown {
+	display: none;
+	position: absolute;
+	right: 1rem;
+	background-color: #f1f1f1;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	z-index: 1;
+}
+
+.userMenu .dropdown {
+	background-color: rgb(255, 255, 255);
+}
+
+.userMenu:hover p {
+	background-color: #e9e9e9;
+}
+
+.userMenu:hover .dropdown {
+	display: block;
+}
+
+/* Links inside the dropdown */
+.dropdown a {
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+}
+
+.dropdown a:hover {
+	background-color: #e9e9e9;
+}
+
+
+/* BOTTOM NAVIGATION */
+.bottomNavigation {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	padding: 0.5rem 0;
+	background-color: #B7DFF0;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 0.5rem;
+	justify-items: center;
+	display: none;
+}
+
+.bottomNavigation>img {
+	width: 1.875rem;
+	height: auto;
+}
+
+@media all and (max-width: 1000px) {
+	.header {
+		grid-template-columns: 5fr 3fr 1fr;
+	}
+
+	.userMenu p {
+		margin: 0;
+		display: none;
+	}
+
+	.userMenu img {
+		display: block;
+	}
+}
+
+@media all and (max-width: 700px) {
+	.header {
+		grid-template-columns: 1fr auto;
+	}
+
+	.navigations {
+		display: none;
+	}
+
+	.bottomNavigation {
+		display: grid;
+	}
+
+	.search {
+		min-width: 90%;
+	}
+}
+
+@media all and (max-width: 300px) {
+	.header {
+		gap: 1rem;
+	}
+
+	.logoAndSearch>img {
+		display: none;
+	}
+}

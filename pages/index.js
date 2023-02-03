@@ -23,7 +23,12 @@ export default function Home({ csrfToken }) {
 	return (
 		<main className={loginStyles.loginPage}>
 			<section className={loginStyles.logoSection}>
-				<img src="/full-logo.png" alt="Haribon" />
+				<Image
+					src="/logo.png"
+					alt="Haribon"
+					width={1125}
+					height={270}
+				/>
 				<p>
 					Share ideas, safe space, and connect with your fellow
 					<span> PLM HARIBONS.</span>

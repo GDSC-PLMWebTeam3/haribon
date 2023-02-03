@@ -21,6 +21,7 @@
 .logoSection>img {
 	width: 90vw;
 	max-width: 28rem;
+	height: auto;
 }
 
 .logoSection>p {
@@ -64,7 +65,8 @@
 .loginSection button {
 	border-radius: 0.625rem;
 	height: 3rem;
-	width: 11rem;
+	width: 100%;
+	/* max-width: 11rem; */
 	align-self: center;
 }
 

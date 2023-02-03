@@ -40,7 +40,6 @@ export default async function getAllPost(req, res) {
 		case "DELETE":
 			try {
 				const { postId, email } = req.body;
-				console.log(postId, email);
 				const posts = await Post.findOneAndDelete({ _id: postId, email: email }).exec();
 				res.status(200).json({
 					success: true,

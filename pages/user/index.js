@@ -1,18 +1,26 @@
-import Navigation from "../../components/Navigation";
+import Image from "next/image";
+import PageLayout from "../../components/PageLayout";
 import { signOut, getSession } from "next-auth/react";
+import MainContent from "../../components/MainContent";
+import { useRouter } from "next/router";
 export default function Home(props) {
+	const user = props.email.split("@")[0];
 	return (
 		<>
-			<Navigation user={props.user}></Navigation>
-			<button onClick={() => signOut()}>Sign Out</button>
+			<PageLayout email={props.email}>
+				<MainContent
+					email={props.email}
+					user={user}
+				/>
+			</PageLayout>
 		</>
 	);
 }
 
 export async function getServerSideProps(context) {
 	const session = await getSession(context);
-	const user = session.user.email;
+	const email = session.user.email;
 	return {
-		props: { user }
+		props: { email }
 	};
 }

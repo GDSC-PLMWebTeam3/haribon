@@ -11,7 +11,7 @@ export default async function commentPost(req, res) {
 	const { method } = req;
 	await connectMongo();
 	switch (method) {
-		case "POST":
+		case "PUT":
 			try {
 				const { postId, anonymous, email, comment } = req.body;
 				const post = await Post.findOneAndUpdate(
