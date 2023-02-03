@@ -1,5 +1,5 @@
-import UserInfo from "./MainContent/UserInfo";
-import Feed from "./MainContent/Feed";
+import UserInfo from "./UserInfo";
+import Feed from "./Feed";
 import styles from "../styles/MainContent.module.css";
 export default function MainContent(props) {
 	return (

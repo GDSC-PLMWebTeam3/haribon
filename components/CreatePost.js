@@ -1,4 +1,4 @@
-import styles from "../../../styles/MainContent/Feed/CreatePost.module.css";
+import styles from "../styles/MainContent/Feed/CreatePost.module.css";
 import Image from "next/image";
 import { useState } from "react";
 

@@ -1,11 +1,11 @@
 import Image from "next/image";
-import CreatePost from "./Feed/CreatePost";
-import Posts from "./Feed/Posts";
-import styles from "../../styles/MainContent/Feed.module.css";
-import useFetchPosts from "../../hooks/useFetchPosts";
+import CreatePost from "./CreatePost";
+import Posts from "./Posts";
+import styles from "../styles/MainContent/Feed.module.css";
+import useFetchPosts from "../hooks/useFetchPosts";
 import { useState, useEffect } from "react";
-import useLikePost from "../../hooks/useLikePost";
-import useUnlikePost from "../../hooks/useUnlikePost";
+import useLikePost from "../hooks/useLikePost";
+import useUnlikePost from "../hooks/useUnlikePost";
 export default function Feed(props) {
 	const [posts, setPosts] = useState("Loading");
 

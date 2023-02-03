@@ -1,5 +1,5 @@
 import Image from "next/image";
-import styles from "../../styles/MainContent/UserInfo.module.css";
+import styles from "../styles/MainContent/UserInfo.module.css";
 export default function UserInfo(props) {
 	return (
 		<section className={styles.userInfo}>

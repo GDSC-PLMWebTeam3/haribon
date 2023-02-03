@@ -1,0 +1,42 @@
+.comment {
+	background-color: #B7DFF0;
+	border-radius: 0.5rem;
+	margin-top: 1rem;
+	padding: 0.5rem;
+}
+
+.comment h2 {
+	font-size: 0.85rem;
+	margin: 0;
+}
+
+.comment .date {
+	margin: 0;
+	font-size: 0.7rem;
+	color: rgb(70, 70, 70);
+}
+
+.comment .content {
+	font-size: 0.8rem;
+	margin: 1rem 0;
+}
+
+.commentHeading {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.commentHeading button {
+	background: none;
+	border: 0;
+}
+
+.commentHeading .imgDelete {
+	width: 1rem;
+	height: auto;
+}
+
+.commentHeading img:hover {
+	opacity: 60%;
+}

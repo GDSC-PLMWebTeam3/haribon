@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import useFetchPosts from "../../../hooks/useFetchPosts";
-import styles from "../../../styles/MainContent/Feed/Posts.module.css";
+import useFetchPosts from "../hooks/useFetchPosts";
 import Image from "next/image";
 import { nanoid } from "nanoid";
 import { useRouter } from "next/router";
+import styles from "../styles/MainContent/Feed/Posts.module.css";
+import Comment from "./Comment";
 export default function Posts(props) {
 
 
@@ -94,6 +95,32 @@ function Post({
 						/>
 					</button>
 				</div>
+				{post.comments.map(comment => {
+					return (
+						<>
+							<Comment
+								key={nanoid()}
+								sessionEmail={sessionEmail}
+								email={comment.email}
+								anonymous={comment.anonymous}
+								comment={comment.comment}
+								date={comment.date}
+							/>
+							<form className={styles.addComment}>
+								<textarea name="" />
+								<button>
+									<Image
+										src={"/icon-send.png"}
+										alt=""
+										width={512}
+										height={512}
+										title={"Send Comment"}
+									/>
+								</button>
+							</form>
+						</>
+					);
+				})}
 			</div>
 		</article >
 	);
