@@ -9,7 +9,10 @@ export default function Comment(props) {
 		<section className={styles.comment}>
 			<div className={styles.commentHeading}>
 				<div>
-					<h2>{props.email.split("@")[0]}</h2>
+					<h2>{
+						props.anonymous ? "Anon" :
+							props.email.split("@")[0]
+					}</h2>
 					<p className={styles.date}>{date} @ {hour}:{min}</p>
 				</div>
 				{
