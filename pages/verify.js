@@ -19,6 +19,7 @@ export default function Home({ csrfToken }) {
 					alt="Haribon"
 					width={1125}
 					height={270}
+					priority
 				/>
 				<p>
 					A sign in link has been sent to your

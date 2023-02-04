@@ -8,6 +8,7 @@ export default function App({
 	return (
 		<>
 			<Head>
+				<meta name="description" content="Share ideas, safe space, and connect with your fellow PLM Haribons!" />
 				<title>Haribon</title>
 				<link rel="shortcut icon" href="/bare-logo.png" type="image/x-icon" />
 			</Head>

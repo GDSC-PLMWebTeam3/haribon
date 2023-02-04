@@ -28,6 +28,7 @@ export default function Home({ csrfToken }) {
 					alt="Haribon"
 					width={1125}
 					height={270}
+					priority
 				/>
 				<p>
 					Share ideas, safe space, and connect with your fellow
@@ -50,7 +51,8 @@ export default function Home({ csrfToken }) {
 							title="PLM Email"
 						/>
 					</label>
-					<button type="submit" disabled={!formData.email.endsWith("@plm.edu.ph")}>Login</button>
+					{/* <button type="submit" disabled={!formData.email.endsWith("@plm.edu.ph")}>Login</button> */}
+					<button type="submit">Login</button>
 				</form>
 			</section>
 		</main>

@@ -75,7 +75,7 @@
 }
 
 .loginSection button:enabled {
-	background-color: var(--clr-verified-blue);
+	background-color: var(--clr-dark-blue);
 	color: white;
 	border: 0;
 	transition: 0.1s ease-in-out;

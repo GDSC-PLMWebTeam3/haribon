@@ -27,6 +27,7 @@ export default function ErrorPage(res) {
 				src={"/bare-logo.png"}
 				width={200}
 				height={200}
+				priority
 			/>
 			<div className={styles.error}>
 				<h1>{code}</h1>
