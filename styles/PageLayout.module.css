@@ -41,9 +41,14 @@
 	max-width: 40rem;
 }
 
-.navigations img {
+.navigations img:first-child {
 	width: 1.875rem;
 	height: auto;
+}
+
+.navigations img {
+	width: 1.875rem;
+	height: 1.875rem;
 }
 
 .userMenu {

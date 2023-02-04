@@ -7,7 +7,9 @@ export default function trending(props) {
 		<>
 			<PageLayout email={props.email}>
 				<main className={styles.main}>
-					<Trending />
+					<section className={styles.container}>
+						<Trending />
+					</section>
 				</main>
 			</PageLayout>
 		</>

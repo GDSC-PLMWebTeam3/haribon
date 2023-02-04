@@ -166,7 +166,7 @@ function AddComment({ postId, commentPost }) {
 				<div className={styles.addComment}>
 					<textarea
 						name="comment"
-						title="Comment"
+						title="Write a comment"
 						value={comment.comment}
 						onChange={handleCommentChange}
 					/>

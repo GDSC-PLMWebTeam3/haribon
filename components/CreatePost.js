@@ -32,7 +32,7 @@ export default function CreatePost(props) {
 					height={362 / 2}
 				/>
 			</div> */}
-			<form onSubmit={handlePost}>
+			<form onSubmit={handlePost} >
 				<label htmlFor="anonymous" className={styles.anonymous}>
 					<input
 						type="checkbox"
@@ -44,6 +44,7 @@ export default function CreatePost(props) {
 					Post anonymously
 				</label>
 				<textarea
+					title="Create a post"
 					name="content"
 					id="content"
 					placeholder="What's up?"

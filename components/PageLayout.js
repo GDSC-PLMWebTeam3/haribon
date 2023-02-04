@@ -25,7 +25,7 @@ function Header(props) {
 					width={200}
 					height={200}
 				/>
-				<input type="text" name="search" className={navStyles.search} />
+				<input type="text" name="search" className={navStyles.search} title={"Search"} />
 			</form>
 			<div className={navStyles.navigations}>
 				<Link href="/user">
