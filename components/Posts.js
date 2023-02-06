@@ -144,7 +144,6 @@ function AddComment({ postId, commentPost }) {
 		comment: "",
 		anonymous: false
 	});
-	console.log(comment);
 	function handleCommentChange(event) {
 		const { name, type, checked, value } = event.target;
 		setComment(prevState => {
